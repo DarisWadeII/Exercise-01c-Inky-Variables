@@ -57,23 +57,46 @@ The room seems to be shaped in a wide circle, with very tall maroon walls, the c
 * [Examine Gate] -> examine_door
 
 == examine_door ==
-The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} the center is blank and the right section is blank.  Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.
+The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} {second_cycle == "Pillar of the Community": the center section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ second_cycle == "Chrismas Vacation": the center section has the picture of a VHS tape,| } { second_cycle == "Lemon Party": The center section has the picture of a lemon,|} {tripping_death: |the center section is blank,} and {final_cycle == "Pillar of the Community": and the right section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ final_cycle == "Chrismas Vacation": and the right section has the picture of a VHS tape,| } { final_cycle == "Lemon Party": and the right section has the picture of a lemon,|} {tripping_death: |and the right section is blank,}.  Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.
 * [?] -> journey_begins
 + {big_voice} [Next] -> judgement_hall
 == tripping_death ==
 There are three white cloud's before you.  Staring at the first cloud make's your taste bud's sour all the while giving you a comforting feeling of being somewhere clean.  Staring at the second cloud you feel an overwhelming sense of nostalgia and holiday cheer, for some reason you are reminded of hawaii as well.  Staring at the third cloud give's you a sense of failure as if you have broken some ancient custom that should never have been broken, you do get the feeling you might make alot of money though.  All you can tell is what you choose will affect you in a way deeper than you could ever know.
- {first_cycle == "Chrismas Vacation" or "Pillar of the Community":  |* [First Cloud]} 
+
+* { first_cycle != "Christmas Vacation" || first_cycle != "Pillar of the Community" } [First Cloud] 
  ~ first_cycle = "Lemon Party"
  ~ goodness = goodness + 1
  -> guide_rufiki
-* [Second Cloud] 
+ * { second_cycle != "Christmas Vacation" || second_cycle != "Pillar of the Community" }{ first_cycle == "Christmas Vacation" || first_cycle == "Pillar of the Community" } [First Cloud] 
+ ~ second_cycle = "Lemon Party"
+ -> guide_rufiki
+ * {first_cycle != "Lemon Party"} { second_cycle == "Christmas Vacation" || second_cycle == "Pillar of the Community" } [First Cloud] 
+ ~ final_cycle = "Lemon Party"
+ ~ goodness = goodness +1
+-> guide_rufiki
+* { first_cycle != "Lemon Party" || first_cycle != "Pillar of the Community" } [Second Cloud] 
 ~ first_cycle = "Chrismas Vacation"
    ~ midness = midness + 1
    -> guide_sleddy
-* [Third Cloud] 
+ * {second_cycle != "Lemon Party" || second_cycle != "Pillar of the Community" }{ first_cycle == "Lemon Party" || first_cycle == "Pillar of the Community" }[Second Cloud] 
+~ second_cycle = "Chrismas Vacation"
+   -> guide_sleddy
+ * {first_cycle != "Chrismas Vacation"} { second_cycle == "Lemon Party" || second_cycle == "Pillar of the Community" } [Second Cloud] 
+~ final_cycle = "Chrismas Vacation"
+   ~ midness = midness + 1
+   -> guide_sleddy
+* { first_cycle != "Lemon Party" || first_cycle != "Christmas Vacation" }[Third Cloud] 
 ~ first_cycle = "Pillar of the Community"
 ~ badness = badness + 1
 -> guide_mother
+* { second_cycle != "Christmas Vacation" || second_cycle != "Lemon Party" }{ first_cycle == "Christmas Vacation" || first_cycle == "Lemon Party" }[Third Cloud] 
+~ second_cycle = "Pillar of the Community"
+-> guide_mother
+ * {first_cycle != "Pillar of the Community"} { second_cycle == "Lemon Party" || second_cycle == "Christmas Vacation" }[Third Cloud] 
+~ final_cycle = "Pillar of the Community"
+~ badness = badness + 1
+-> guide_mother 
+
 
 
 == rufiki_guide ==
