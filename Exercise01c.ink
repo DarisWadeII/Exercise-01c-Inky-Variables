@@ -52,19 +52,28 @@ The only thing worse is your headache.
 + {your_surroundings} [Examine Door] -> examine_door
 + {big_voice} [Choose your Karma] -> tripping_death
 
+== your_surroundings ==
+The room seems to be shaped in a wide circle, with very tall maroon walls, the ceiling has several black chandeilier's hanging from above holding a vareity of differently sized candle's with blue wax and purple flame.  Besides the center gate there seem's to be no other door's visable. 
+* [Examine Gate] -> examine_door
+
+== examine_door ==
+The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} the center is blank and the right section is blank.  Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.
+* [?] -> journey_begins
++ {big_voice} [Next] -> judgement_hall
 == tripping_death ==
 There are three white cloud's before you.  Staring at the first cloud make's your taste bud's sour all the while giving you a comforting feeling of being somewhere clean.  Staring at the second cloud you feel an overwhelming sense of nostalgia and holiday cheer, for some reason you are reminded of hawaii as well.  Staring at the third cloud give's you a sense of failure as if you have broken some ancient custom that should never have been broken, you do get the feeling you might make alot of money though.  All you can tell is what you choose will affect you in a way deeper than you could ever know.
- + [First Cloud] -> guide_rufiki
+ {first_cycle == "Chrismas Vacation" or "Pillar of the Community":  |* [First Cloud]} 
  ~ first_cycle = "Lemon Party"
  ~ goodness = goodness + 1
- 
-+ [Second Cloud] -> guide_sleddy
+ -> guide_rufiki
+* [Second Cloud] 
 ~ first_cycle = "Chrismas Vacation"
    ~ midness = midness + 1
-+ [Third Cloud] -> guide_mother
+   -> guide_sleddy
+* [Third Cloud] 
 ~ first_cycle = "Pillar of the Community"
 ~ badness = badness + 1
-
+-> guide_mother
 
 
 == rufiki_guide ==
@@ -105,7 +114,7 @@ He begin's to point at your chest, "Let us go to Pinsolupendi forever."
 
 ==pinsol_upendi==
 
-You and the Baboon begin to fly high at astronomical speed's.  The jungle expand's at a rapid rate, you see lemon's everywhere.  Even the cloud's are lemon shaped.  Gorgeous waterfalls made of the lemony fresh elixer are everywhere the eye can see.  There is no place in all of creation more clean and you feel at piece. 
+You and the Baboon begin to fly high at astronomical speed's.  The jungle expand's at a rapid rate, you see lemon's everywhere.  Even the cloud's are lemon shaped.  Gorgeous waterfalls made of the lemony fresh elixer are everywhere the eye can see.  There is no place in all of creation more clean and you feel at peace. 
 -> DONE
 == sorta_wrong1 ==
 
@@ -172,11 +181,7 @@ Then all of the sudden the music muffle's down to a purr and a loud cheery voice
 *[Turn Around] -> sleddy_guide
 
 
-== guide_mother ==
-You enter the third cloud and emerge somewhere familiar.  It's a living room, your living room or well it used to be.  It was your parent's old place you lived at the first eight year's of your life but it had to be demolished because the government had to build some shopping malls for the community or something like that, so you moved.  All of a sudden you can hear what sounds to be an oven door open behind you and the intense aroma of your favorite kind of cookie's hit's the air.
 
-You hear a slam of the stove closing followed by a hollar, "OWWWWW, Good Lord!!"  That voice, you know that voice, could it be..?
-*[Turn Around] -> mother_guide
 
 
 
@@ -199,7 +204,7 @@ The two of you seemingly warp to a branching path in the middle of the forest yo
 
 The sled does a little spin to create a tiny tornado that head's your way that causes you to fall and slip on your bum (this time) heading towards the left path.
 
-The sled begins to yell as you slide, "Just make sure to keep your eye's open for ice patches, especially during the winter month's.." The voice fade's out.
+The sled begins to yell as you slide, "Mele Kalikimaka partner, make sure to keep your eye's open for ice patches, especially during the winter month's.." The voice fade's out.
 * [Return back to your old Life] -> ice_return
 
 ==ice_return==
@@ -283,21 +288,127 @@ The sled paused as it took note of your confused demeanor.
 
 "Anywho, like I said Im here to get ya going again, so here' a couple of options!"
 * [Make a choice] -> sleddy_guide
+
+== guide_mother ==
+You enter the third cloud and emerge somewhere familiar.  It's a living room, your living room or well it used to be.  It was your parent's old place you lived at the first eight year's of your life but it had to be demolished because the government had to build some shopping malls for the community or something like that, so you moved.  All of a sudden you can hear what sounds to be an oven door open behind you and the intense aroma of your favorite kind of cookie's hit's the air.
+
+You hear a slam of the stove closing followed by a hollar, "OWWWWW, Good Lord!!"  That voice, you know that voice, could it be..?
+
+*[Turn Around] -> mother_guide
+
 == mother_guide ==
-  
-+ ["Who are you and why am I here"] -> third_answer
-* {third_answer} [""] -> 
+  It appears to be your, Mother? She look's like she was when you were small, one would think that is strange enough but she appear's to be hunkerd over in pain with a hunchback.  It' look's terribly painful.
++ ["Mom, how are you here, what's going on"] -> third_answer
+* {third_answer} ["Mom what the hell happened to your back?"] -> moms_back
 * {third_answer} [Answer a Riddle] -> bad_riddle
 * {third_answer} [Answer some fun Trivia] -> bad_trivia
 
-== your_surroundings ==
-The room seems to be shaped in a wide circle, with very tall maroon walls, the ceiling has several black chandeilier's hanging from above holding a vareity of differently sized candle's with blue wax and purple flame.  Besides the center gate there seem's to be no other door's visable. 
-* [Examine Gate] -> examine_door
+==bad_trivia==
+You see your mother take a deep anxiety filled breath
 
-== examine_door ==
-The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  The left section is blank and the right section is blank, the center is blank.  Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.
-* [?] -> journey_begins
-+ {big_voice} [Next] -> judgement_hall
+"How did you get here?"
+* ["I was busy buying you a mother's day present and planning to come by to see you an all that, but, Swear To God, as I was reaching down for one of them funny card's I always get you with the silly sounds somebody bumped into me and the whole carrying case of them fell on top of my head, can you believe it."] -> hell_awaits
+* ["I was walking down the street late at night in a bad part of town, tripped and stepped on a crack in the sidewalk breaking your back and my head.  I'm Sorry Mama."] -> your_forgiven
+
+==hell_awaits==
+An ominous organ begins to play.
+
+Your mother begins to tremble and tears pour from her eye's.
+
+"Oh lord please no, please, dont take em, please dont take em, take me, TAKE ME-AAAAUUUUUUGGGGGGGHHHHHHHHHHHHHOUUUUUUUUUUUHGHHHHHHHHH."  This was the big one.
+
+You reach out towards your mama out of desperation to help and the fear you now deeply felt.  Instead of reaching her the floor fall's out from beneath you.
+* [6 H.E. DOUBLE 6 HOCKEY STICKZ 6] -> youdid_this
+
+==youdid_this==
+Well you were warned.  From the time you were a little kid till you were grown your mama warned ya to take care.  And take care you did not. There's no need to going into to much detail as you know how it goes down there.  It's all just like in the various books, movie's, tv shows and comic's youv'e already seen, especially the movie's.  Ya know like the Keanu Reeve's film Constantine or the other Keanu Reeve's film The Devil's Advocate.  Yeah it's Preeeeetty Bad...
+->DONE
+
+
+==your_forgiven==
+"It's ok, it's ok, your forgiven sweetheart, I know ya didnt mean it."
+
+She hit's her hump a couple time's.
+
+"It may hurt like a beayotch but you told the truth and that's all that matter's."
+
+A white light begin's to glow above you.
+
+"And it look's like it doesnt just matter to me, oh thank you lord."
+
+Your being sucked into the light.
+
+* [Return back to your old life] -> another_chance
+
+==another_chance==
+You wake up on the edge of a sidewalk and are just a little dizzy but mostly fine, well except for the fact your phone, wallet and shoe's were stolen while you were out but hey at least your alive.  That night you call your mama and tell her all about what happened, she tries to comfort you even if she think's your crazy, she's just glad your alive, you apologize several times for breaking her back.  When you visit her she's still the same older mamma that you left and not the younger one you spoke to there.  Was it all a dream? Maybe, either way you make sure to never step on a crack again, ever.  But let's be honest paying attension to every little crack does make you an easy target for something else to happen, just sayin..
+* [Huh?] -> a_stir
+==bad_riddle==
+"What doctor's favorite way to swim is the back stroke, they also lose buisiness when thing's are properly cemented. 
+* [A Chiropracter] -> thatsmy_boy
+* [Sidewalks] -> what_why
+
+==thatsmy_boy==
+Your mother's hunchback is miraculously healed.  She looks just like you remembered her as a small kid.
+"Oh honey, thank you sweet baby jesus, thank you."
+"I knew you could do it honey im so proud."  
+A wave of relief flowed over her agony ridden face.
+"Your all right now honey, it's gonna be allll right."
+
+She thinks to herself for a moment after collecting herself.
+
+"Child there is one more descision I as your mama can be apart of."
+"I let you go long ago, so it's up to you if you wish to move forward or stay here with me."
+* [Stay with your Mom] -> home_forever
+* [Move Forward] -> chiropracter_reborn
+
+==home_forever==
+A look of relief and a pure joy cause your mother's face to tremble.  You can tell this is the best news she could ever recieve in any lifetime, words cannot do it justice.
+
+After a moment she speaks.
+
+"Okay honey just take my hand real quick."
+
+You take her hand and all of a sudden your a child again, your old house you used to love spring's to life, it's exactly as you remember it.  All your toy's, your favorite cartoon's, your happy mom and heck it's even your favorite temperature.  Oh but you cant forget about those cookie's, the endless amount of your favorite cookies that you could just eat forever nonstop and in fact I think that just might be what you do.
+-> DONE
+
+== chiropracter_reborn ==
+Your mother's eye's well up with tears. "I know honey, I know, it's time to part our way's"
+"You become the bestest most kindest chiropracter the world has ever seen."
+
+You begin to be pulled away from the house now by a force as your spirit begins to be carried. 
+
+You can hear your mom yell some final encouraging words, "Now you go and make me proud, fix more back's than anyone has ever bothered to fix, and make yourself a ton of money, haha."  She end's with the sound of laughter.
+
+Your mind and soul are reborn into the body of a young man who's soul and mind were sucked right on out from messing with witchcraft.  You use this new opportunity to get a license to chiropracter, make lot's of money and hopefully help a few people along the way, maybe.  Even though you have a new set of parent's you'll never forget what your old mama did for you.  After year's of messing with people's backs and amounting a massive amount of wealth you fade away in your country mansion.  Im sure you reborn into many lives that may or may not take advantage of other's for profit, from a certain point of view...
+* [Continue the Cycle] -> a_stir
+==what_why==
+"AAHHH OOWWWW"
+"Why in the world are you babblin about a sidewalk child, a sidewalk isnt gonna fix my back child, they are the PROBLEM not the SOLUTION."  "I thought the cement comment would throw you an easy one not distract you, I don't know what Im going to do with you."  She shake's her head in utter dissapointment.
+~ badness = badness - 3
+* [One more shot] -> mother_guide
+==moms_back==
+"What the hell happened to my back, WHAT THE HELL HAPPENED TO MY BACK?"  
+
+She pauses to manage the pain.
+
+"YOU DID, I told you to watch out where you were going, I always told you to watch out for crack's and now look what ya did to your poor mother.  I KNOW I raised you better than that."
+ ~ badness = badness + 1
+* [Consider things carefully] -> mother_guide
+
+==third_answer==
+"Now calm down with your panick-." "OOOOOWWWWWW, WHY DID YOU DO THIS TO ME CHILD, WHY OH WHY." your mother wail's.
+"All you had to do was pay attension, why didnt you pay attension of your dear old mother."
+"As for how and why Im here my sweet southern child I have no idea, I just know it has to do with my aching posterior, my lord I need some vicoden.  The only thing's here are cookie dough and some baking sheets, so I figured with you coming by I might as well make some."  She extends out the plate, "Here child, eeuggh, ittsss for you." she barely completes the sentence.
+
+Although concerned you gladly take several cookie's scarfing them down quickly.
+
+She smile's through the pain at your geniune enjoyment, however the smile quickly fades and it's not due to the back.
+
+"My child, I think.. I think im here to help set you straight, there are some important decisions you are going to have to make that ya mamma cant make for ya, ya hear."  
+She grab's her chest, "Im afraid these may have heavy consequences, I only just hope... EEEEEEEUGGGGGGH... I only hope I raised you right."
+* [Consider things carefully] -> mother_guide
+
 
 == journey_begins ==
 
