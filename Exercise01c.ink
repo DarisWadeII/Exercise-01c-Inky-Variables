@@ -23,36 +23,7 @@ This exercise will demonstrate the following in the example video:
  Great or equal: >=
  Less or equal: <=
  
-*/
-
-VAR goodness = 0
-VAR first_cycle = ""
-VAR second_cycle = ""
-VAR final_cycle = ""
-VAR badness = 0
-VAR midness = 0
-
--> spotsatykotse 
-
-== spotsatykotse == 
-Spotsatykotse
-*[Begin] -> a_stir
-
-== a_stir ==
-REEEEEEEEEEEEEEEEEEEE.
-
-What a horribly piercing sound.
-
-The only thing worse is your headache.  
-+ [Get up] -> judgement_hall
-
-== judgement_hall ==
-{your_surroundings: | Painfully, you slowly but surly rise to your feet.}  The last thing you remember is falling and hitting your head, now you stand in the middle of an expansive dimly lit room with a huge door in it's center.
-* [Examine your surroundings] -> your_surroundings
-+ {your_surroundings} [Examine Door] -> examine_door
-+ {big_voice} {final_cycle != "Lemon Party" || final_cycle != "Christmas Vacation" || final_cycle != "Pillar of the Community"}[Choose your Karma] -> tripping_death
-+ {final_cycle != ""} [Enter the Door] -> karma_score
-+ {a_stir} [Good Karma] 
+  {a_stir} [Good Karma] 
 -> good_ness
  {goodness}
 + {a_stir} [Neutral Karma] 
@@ -73,33 +44,10 @@ The only thing worse is your headache.
 {badness} 
 
 ->judgement_hall
-==karma_score==
-The space you enter is a completely white void, you are the only think here, you think.. 
-
-You take one last look behind you at the door but you see it has disappeared completely upon closing.
-
-All of a sudden you here a familiar big booming voice.
-
-"CONGRADULATIONS PLAYER ON A JOB WELL DONE!!! LET'S TALLY UP THEM KARMA SCORE'S FOLKS!."
-
-{goodness} POINT'S IN GOOD KARMA
-{midness} POINT'S IN NEUTRAL KARMA
-{badness} POINT'S IN BAD KARMA
-
--> DONE
 
 
+{final_cycle != "Lemon Party" || final_cycle != "Christmas Vacation" || final_cycle != "Pillar of the Community"}
 
-== your_surroundings ==
-The room seems to be shaped in a wide circle, with very tall maroon walls, the ceiling has several black chandeilier's hanging from above holding a vareity of differently sized candle's with blue wax and purple flame.  Besides the center gate there seem's to be no other door's visable. 
-* [Examine Gate] -> examine_door
-
-== examine_door ==
-The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} {second_cycle == "Pillar of the Community": the center section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ second_cycle == "Chrismas Vacation": the center section has the picture of a VHS tape,| } { second_cycle == "Lemon Party": The center section has the picture of a lemon,|} {second_cycle != "": |the center section is blank,} {final_cycle == "Pillar of the Community": and the right section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ final_cycle == "Chrismas Vacation": and the right section has the picture of a VHS tape,| } { final_cycle == "Lemon Party": and the right section has the picture of a lemon,|} {final_cycle != "": |and the right section is blank.}  {final_cycle != "": Underneath the center is the outline of a huge keyhole.. suddenly it begins to glow and it reform's into a strange picture of something very close to you, the core of your being.  Then you realise it's a picture of your soul, deep down you understand what this means.  The door crack's open.|Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.}
-* [?] -> journey_begins
-+ {big_voice} [Next] -> judgement_hall
-== tripping_death ==
-There are three white cloud's before you.  Staring at the first cloud make's your taste bud's sour all the while giving you a comforting feeling of being somewhere clean.  Staring at the second cloud you feel an overwhelming sense of nostalgia and holiday cheer, for some reason you are reminded of hawaii as well.  Staring at the third cloud give's you a sense of failure as if you have broken some ancient custom that should never have been broken, you do get the feeling you might make alot of money though.  All you can tell is what you choose will affect you in a way deeper than you could ever know.
 
 * { first_cycle != "Christmas Vacation" || first_cycle != "Pillar of the Community" } [First Cloud] 
  ~ first_cycle = "Lemon Party"
@@ -135,9 +83,142 @@ There are three white cloud's before you.  Staring at the first cloud make's you
 ~ badness = badness + 1
 -> guide_mother 
 
+*/
+
+VAR goodness = 0
+VAR first_cycle = ""
+VAR second_cycle = ""
+VAR final_cycle = ""
+VAR badness = 0
+VAR midness = 0
+
+-> spotsatykotse 
+
+== spotsatykotse == 
+Spotsatykotse
+*[Begin] -> a_stir
+
+== a_stir ==
+REEEEEEEEEEEEEEEEEEEE.
+
+What a horribly piercing sound.
+
+The only thing worse is your headache.  
++ [Get up] -> judgement_hall
+
+== judgement_hall ==
+{your_surroundings: | Painfully, you slowly but surly rise to your feet.}  The last thing you remember is falling and hitting your head, now you stand in the middle of an expansive dimly lit room with a huge door in it's center.
+* [Examine your surroundings] -> your_surroundings
+* {your_surroundings} [Examine the Door] ->examine_door
+* {tripping_death} [Examine the Door] ->examine_door
+* {second_cycle != ""} [Examine the Door] ->examine_door
+* {final_cycle != ""} [Accept the Door] ->accept_door
+* {big_voice} [Choose your Karma] -> tripping_death
+* {first_cycle == "Lemon Party"} [Choose your Karma] -> another_death1
+* {first_cycle == "Chrismas Vacation"} [Choose your Karma] -> another_death2
+*{first_cycle == "Pillar of the Community"} [Choose your Karma] -> another_death3
+* {first_cycle == "Lemon Party" && second_cycle == "Chrismas Vacation"} [Choose your Karma] -> final_death1
+*{first_cycle == "Chrismas Vacation" && second_cycle == "Lemon Party"} [Choose your Karma] -> final_death1
+* {first_cycle == "Lemon Party" && second_cycle == "Pillar of the Community"} [Choose your Karma] -> final_death2
+*{first_cycle == "Pillar of the Community" && second_cycle == "Lemon Party"} [Choose your Karma] -> final_death2
+* {first_cycle == "Pillar of the Community" && second_cycle == "Chrismas Vacation"} [Choose your Karma] -> final_death3
+*{first_cycle == "Chrismas Vacation" && second_cycle == "Pillar of the Community"} [Choose your Karma] -> final_death3
++ {accept_door} [Enter the Door] -> karma_score
+
+==karma_score==
+The space you enter is a completely white void, you are the only think here, you think.. 
+
+You take one last look behind you at the door but you see it has disappeared completely upon closing.
+
+All of a sudden you here a familiar big booming voice.
+
+"CONGRADULATIONS PLAYER ON A JOB WELL DONE!!! LET'S TALLY UP THEM KARMA SCORE'S FOLKS!."
+
+{goodness} POINT'S IN GOOD KARMA
+{midness} POINT'S IN NEUTRAL KARMA
+{badness} POINT'S IN BAD KARMA
+
+-> DONE
 
 
 
+== your_surroundings ==
+The room seems to be shaped in a wide circle, with very tall maroon walls, the ceiling has several black chandeilier's hanging from above holding a vareity of differently sized candle's with blue wax and purple flame.  Besides the center gate there seem's to be no other door's visable. 
+* [Examine Gate] -> examine_door
+
+== examine_door ==
+The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} {second_cycle == "Pillar of the Community": the center section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ second_cycle == "Chrismas Vacation": the center section has the picture of a VHS tape,| } { second_cycle == "Lemon Party": The center section has the picture of a lemon,|} {second_cycle != "": |the center section is blank,} {final_cycle == "Pillar of the Community": and the right section has the picture of a man with an arm on his back and the other hand giving a thumbs up.|}{ final_cycle == "Chrismas Vacation": and the right section has the picture of a VHS tape,| } { final_cycle == "Lemon Party": and the right section has the picture of a lemon,|} {final_cycle != "": |and the right section is blank.}  {final_cycle != "":  Underneath the center is the outline of a huge keyhole... as you stare it begins to glow with a bright intensity.  After bracing your eye's you begin to notice it reforming into a strange design, a design of something very close to you, the core of your being...  You realise it's a picture of your soul, deep down you understand what this means.  The door crack's open.|Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.}
+* [?] -> journey_begins
++ {big_voice} [Next] -> judgement_hall
+
+==accept_door==
+The door's size cannot be understated but it is hard to tell just how large it is due to the expansive nature of the room.  On the door you can see interesting linework with symbol's you dont understand.  In the center of the door is a wide frame split into three sections.  {first_cycle == "Pillar of the Community": The left section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ first_cycle == "Chrismas Vacation": The left section has the picture of a VHS tape,| } { first_cycle == "Lemon Party": The left section has the picture of a lemon,|} {tripping_death: |The left section is blank,} {second_cycle == "Pillar of the Community": the center section has the picture of a man with an arm on his back and the other hand giving a thumbs up,|}{ second_cycle == "Chrismas Vacation": the center section has the picture of a VHS tape,| } { second_cycle == "Lemon Party": The center section has the picture of a lemon,|} {second_cycle != "": |the center section is blank,} {final_cycle == "Pillar of the Community": and the right section has the picture of a man with an arm on his back and the other hand giving a thumbs up.|}{ final_cycle == "Chrismas Vacation": and the right section has the picture of a VHS tape,| } { final_cycle == "Lemon Party": and the right section has the picture of a lemon,|} {final_cycle != "": |and the right section is blank.}  {final_cycle != "":  Underneath the center is the outline of a huge keyhole... as you stare it begins to glow with a bright intensity.  After bracing your eye's you begin to notice it reforming into a strange design, a design of something very close to you, the core of your being...  You realise it's a picture of your soul, deep down you understand what this means.  The door crack's open.|Underneath the center is the outline of a huge keyhole.  You have no idea what any of this means.}
+* [Accept your Karma] -> journey_ends
+==journey_ends==
+...
++ {accept_door} [Enter the Door] -> karma_score
+
+== tripping_death ==
+There are three white cloud's before you.  Staring at the first cloud make's your taste bud's sour all the while giving you a comforting feeling of being somewhere clean.  Staring at the second cloud you feel an overwhelming sense of nostalgia and holiday cheer, for some reason you are reminded of hawaii as well.  Staring at the third cloud give's you a sense of failure as if you have broken some ancient custom that should never have been broken, you do get the feeling you might make alot of money though.  All you can tell is what you choose will affect you in a way deeper than you could ever know.
+
+* [First Cloud] 
+ ~ first_cycle = "Lemon Party"
+ ~ goodness = goodness + 1
+ -> guide_rufiki
+ 
+* [Second Cloud] 
+~ first_cycle = "Chrismas Vacation"
+   ~ midness = midness + 1
+   -> guide_sleddy
+    
+* [Third Cloud] 
+~ first_cycle = "Pillar of the Community"
+~ badness = badness + 1
+-> guide_mother
+
+==another_death1==
+* [Left Cloud] 
+~ second_cycle = "Chrismas Vacation"
+   -> guide_sleddy
+    
+* [Right Cloud] 
+~ second_cycle = "Pillar of the Community"
+-> guide_mother
+
+==another_death2==
+* [Left Cloud] 
+ ~ second_cycle = "Lemon Party"
+ -> guide_rufiki
+* [Right Cloud] 
+~ second_cycle = "Pillar of the Community"
+-> guide_mother
+
+==another_death3==
+* [Left Cloud] 
+ ~ second_cycle = "Lemon Party"
+ -> guide_rufiki
+ 
+* [Right Cloud] 
+~ second_cycle = "Chrismas Vacation"
+   -> guide_sleddy
+   
+==final_death3==
+* [Final Cloud] 
+ ~ final_cycle = "Lemon Party"
+ ~ goodness = goodness + 1
+ -> guide_rufiki
+
+==final_death2==
+* [Final Cloud] 
+~ final_cycle = "Chrismas Vacation"
+   ~ midness = midness + 1
+   -> guide_sleddy
+
+==final_death1==
+* [Final Cloud] 
+~ final_cycle = "Pillar of the Community"
+~ badness = badness + 1
+-> guide_mother
 
 == rufiki_guide ==
 You see before you what looks to be an old grey baboon with crazy prism looking eyes using one arm to hold onto a vine that is appearing out of thin air.  The other hand is balled into a fist clearly concealing something.  
