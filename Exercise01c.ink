@@ -22,66 +22,8 @@ This exercise will demonstrate the following in the example video:
  Less: <
  Great or equal: >=
  Less or equal: <=
- 
-  {a_stir} [Good Karma] 
--> good_ness
- {goodness}
-+ {a_stir} [Neutral Karma] 
--> mid_ness
-{midness}
-+ {a_stir} [Bad Karma] 
--> bad_ness
-{badness}
-==good_ness==
-{goodness} 
-
-->judgement_hall
-==mid_ness==
-{midness} 
-
-->judgement_hall
-==bad_ness==
-{badness} 
-
-->judgement_hall
 
 
-{final_cycle != "Lemon Party" || final_cycle != "Christmas Vacation" || final_cycle != "Pillar of the Community"}
-
-
-* { first_cycle != "Christmas Vacation" || first_cycle != "Pillar of the Community" } [First Cloud] 
- ~ first_cycle = "Lemon Party"
- ~ goodness = goodness + 1
- -> guide_rufiki
- * { second_cycle != "Christmas Vacation" || second_cycle != "Pillar of the Community" }{ first_cycle == "Christmas Vacation" || first_cycle == "Pillar of the Community" } [First Cloud] 
- ~ second_cycle = "Lemon Party"
- -> guide_rufiki
-  * {first_cycle != "Lemon Party"} { second_cycle == "Christmas Vacation" || second_cycle == "Pillar of the Community" } [First Cloud] 
- ~ final_cycle = "Lemon Party"
- ~ goodness = goodness +1
--> guide_rufiki
-* { first_cycle != "Lemon Party" || first_cycle != "Pillar of the Community" } [Second Cloud] 
-~ first_cycle = "Chrismas Vacation"
-   ~ midness = midness + 1
-   -> guide_sleddy
-    * {second_cycle != "Lemon Party" || second_cycle != "Pillar of the Community" }{ first_cycle == "Lemon Party" || first_cycle == "Pillar of the Community" }[Second Cloud] 
-~ second_cycle = "Chrismas Vacation"
-   -> guide_sleddy
-    * {first_cycle != "Chrismas Vacation"} { second_cycle == "Lemon Party" || second_cycle == "Pillar of the Community" } [Second Cloud] 
-~ final_cycle = "Chrismas Vacation"
-   ~ midness = midness + 1
-   -> guide_sleddy
-   * { first_cycle != "Lemon Party" || first_cycle != "Christmas Vacation" }[Third Cloud] 
-~ first_cycle = "Pillar of the Community"
-~ badness = badness + 1
--> guide_mother
-* { second_cycle != "Christmas Vacation" || second_cycle != "Lemon Party" }{ first_cycle == "Christmas Vacation" || first_cycle == "Lemon Party" }[Third Cloud] 
-~ second_cycle = "Pillar of the Community"
--> guide_mother
- * {first_cycle != "Pillar of the Community"} { second_cycle == "Lemon Party" || second_cycle == "Christmas Vacation" }[Third Cloud] 
-~ final_cycle = "Pillar of the Community"
-~ badness = badness + 1
--> guide_mother 
 
 */
 
