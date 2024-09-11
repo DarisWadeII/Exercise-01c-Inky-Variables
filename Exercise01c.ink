@@ -91,14 +91,21 @@ VAR second_cycle = ""
 VAR final_cycle = ""
 VAR badness = 0
 VAR midness = 0
+VAR gong = -1
+
 
 -> spotsatykotse 
 
 == spotsatykotse == 
 Spotsatykotse
-*[Begin] -> a_stir
+*[Begin] -> pre_stir
+
+==pre_stir==
+{gong_sound()}
++ [(⊙_⊙)]->a_stir
 
 == a_stir ==
+
 REEEEEEEEEEEEEEEEEEEE.
 
 What a horribly piercing sound.
@@ -112,7 +119,8 @@ The only thing worse is your headache.
 * {first_cycle != ""}{second_cycle == ""} [Examine the Door] ->examine_door
 * {second_cycle != ""}{final_cycle == ""} [Examine the Door] ->examine_door
 * {final_cycle != ""} [Accept the Door] ->accept_door
-* {big_voice} [Choose your Karma] -> tripping_death
+{gong_sound()}
+* {big_voice}[Choose your Karma] -> tripping_death
 * {first_cycle == "Lemon Party"} [Choose your Karma] -> another_death1
 * {first_cycle == "Chrismas Vacation"} [Choose your Karma] -> another_death2
 *{first_cycle == "Pillar of the Community"} [Choose your Karma] -> another_death3
@@ -290,7 +298,7 @@ He then reveal's whats in his closed hand, a beautiful pure yellow Lemon stand's
 "Change is good, for the body and the soul."
 
 You have been reborn as this beautiful Lemon, you will surely be plucked and chosen for a delicious dish or perhaps you will await in the produce ilse of the grocery establish until you find a new home.  Perhaps you will have salt poured on you to be eaten as a snake or squeezed into a fresh batch of lemonaid, either way Im sure you will enjoy it.  After this hundreds of positive lifetime's will surely follow.
-* [The Cycle Continues] ->a_stir
+* [The Cycle Continues] ->pre_stir
 
 == pinesol_heaven==
 "Cant cut it out, it will grow right back."
@@ -336,7 +344,7 @@ You plummet into what look's to be some sort of large container falling onto wha
 
 == pinesol_return ==
 You wake up in a hospital bed, on the surface you believe it was all a dream but deep down you know the lemony truth.  From this point on you always made sure to scout out lemonfresh with your sniffer when entering any room.  But life goes on and even though one life changing mistake is corrected another event is just around the corner.
-* [Ooups] -> a_stir
+* [Ooups] -> pre_stir
 
 == no_relation ==
 "No, no, no, no.  My name is RO-fiki, very legally distinct.  I've never even been to Africa before my chosimba."
@@ -358,7 +366,7 @@ The Baboon begins meniacally laughing at his response while swinging violently b
 You enter the first cloud and emerge somewhere new.  It' seems you have been transported to an opening in a lush jungle with what look like palm tree's hanging over.  It's somewhat humid but to your surprise the jungle floor is very clean, there are no annoying bug's whatsoever and it smell's quite.. fresh.  All of a sudden you hear a voice speaking some mumbo jumbo. 
 
 "ASANTE SANA SQUASH LEMONA.."
-*[Turn Alround] -> rufiki_guide
+*[Turn Around] -> rufiki_guide
 == guide_sleddy ==
 You enter the second cloud and emerge somewhere new.  It's a snowy hill leading to a forest open trail with a tiny shack nearby, it looked perfect for sleding, in the distance you can see a road with a Walmart across it, this is the not a place you thought you would end up in.  All of a sudden you notice a song being played from all around loudly like its coming from a large speaker.  It's a christmas song.
 
@@ -398,7 +406,7 @@ The sled begins to yell as you slide, "Mele Kalikimaka partner, make sure to kee
 
 ==ice_return==
 You wake up on a bench inside a university building with a crowd of people around.  Everyone was worried about you and it makes you feel less alone.  You remember what Sledy said and take it to heart, you immediately go out and buy slick resistant footware for the winter month's.  And heck all that yappin about National Lampoon's Christmas Vacation get's you to buy it on blu ray since you live in the year 2009, what do you know it's an instant classic and now you watch it year after year with your folks building up a nostalgic treasure.  But life is long and fancy footware for just winter wont protect you from everything.
-* [****] -> a_stir
+* [****] -> pre_stir
 ==sled_judgement==
 "You gotta kidding me, you just ripped that story off from Christmas Vacation."
 
@@ -434,7 +442,7 @@ The sled stare's patiently at you as if wanting you to make a decision.
 The sled flip's down in front you, "Hop on partner."
 
 You jump on the sled and an instant you hear a loud WHOOOOOSH as flame's lay in the sled's wake and off you go.  As the sled goes faster you begin to reform into a the shape of a VHS tape, but not just any VHS tape.  You become a VHS tape copy of Nationl Lampoon's Chrismas Vacation.  You are back in the early 90's placed on a cozy shelf of a loving home where you will be watched year after year and for the next hour and thrity seven minute's will fill a family's hearts full of joy and of course later nostalgia.  Im sure after your VHS tape stops working you will be reborn into a variety of live's.
-*[The Cycle Continues] -> a_stir
+*[The Cycle Continues] -> pre_stir
 ==endless_vacation==
 "Really pal, that's just downright awesome, your coming home with me brother."
 
@@ -531,7 +539,7 @@ Your being sucked into the light.
 
 ==another_chance==
 You wake up on the edge of a sidewalk and are just a little dizzy but mostly fine, well except for the fact your phone, wallet and shoe's were stolen while you were out but hey at least your alive.  That night you call your mama and tell her all about what happened, she tries to comfort you even if she think's your crazy, she's just glad your alive, you apologize several times for breaking her back.  When you visit her she's still the same older mamma that you left and not the younger one you spoke to there.  Was it all a dream? Maybe, either way you make sure to never step on a crack again, ever.  But let's be honest paying attension to every little crack does make you an easy target for something else to happen, just sayin..
-* [Huh?] -> a_stir
+* [Huh?] -> pre_stir
 ==bad_riddle==
 "What doctor's favorite way to swim is the back stroke, they also lose buisiness when thing's are properly cemented. 
 * [A Chiropracter] -> thatsmy_boy
@@ -570,7 +578,7 @@ You begin to be pulled away from the house now by a force as your spirit begins 
 You can hear your mom yell some final encouraging words, "Now you go and make me proud, fix more back's than anyone has ever bothered to fix, and make yourself a ton of money, haha."  She end's with the sound of laughter.
 
 Your mind and soul are reborn into the body of a young man who's soul and mind were sucked right on out from messing with witchcraft.  You use this new opportunity to get a license to chiropracter, make lot's of money and hopefully help a few people along the way, maybe.  Even though you have a new set of parent's you'll never forget what your old mama did for you.  After year's of messing with people's backs and amounting a massive amount of wealth you fade away in your country mansion.  Im sure you reborn into many lives that may or may not take advantage of other's for profit, from a certain point of view...
-* [Continue the Cycle] -> a_stir
+* [Continue the Cycle] -> pre_stir
 ==what_why==
 "AAHHH OOWWWW"
 "Why in the world are you babblin about a sidewalk child, a sidewalk isnt gonna fix my back child, they are the PROBLEM not the SOLUTION."  "I thought the cement comment would throw you an easy one not distract you, I don't know what Im going to do with you."  She shake's her head in utter dissapointment.
@@ -618,6 +626,31 @@ Out of nowhere three seperate white cloud's appear before you on the ground..
 "CHOOOOSE YOOUUUUUUR KARMAAAAAAAAAAAAAA!!!" screams a lound echoing gruff voice from the ceiling.  It remind's you of an intense game show announcer.
 
 * [Next] -> judgement_hall
+
+ == function gong_sound ==
+    ~ gong = gong + 1
+    
+    {
+    - gong > 3:
+    ~ gong = 0
+    }
+    
+    {
+    - gong == 0:
+    ~ return "GONG"
+    
+    - gong == 1:
+    ~ return "GONG GONG"
+    
+    - gong == 2:
+    ~ return "GONG GONG GONG"
+    
+    - gong == 3:
+    ~ return "𓍊𓋼𓍊𓋼𓍊𓃦╶⃝⃤𓃥𓍊𓋼𓍊𓋼𓍊"
+    
+    }
+    
+    ~ return gong
 
 
 
