@@ -109,9 +109,8 @@ The only thing worse is your headache.
 == judgement_hall ==
 {your_surroundings: | Painfully, you slowly but surly rise to your feet.}  The last thing you remember is falling and hitting your head, now you stand in the middle of an expansive dimly lit room with a huge door in it's center.
 * [Examine your surroundings] -> your_surroundings
-* {your_surroundings} [Examine the Door] ->examine_door
-* {tripping_death} [Examine the Door] ->examine_door
-* {second_cycle != ""} [Examine the Door] ->examine_door
+* {first_cycle != ""}{second_cycle == ""} [Examine the Door] ->examine_door
+* {second_cycle != ""}{final_cycle == ""} [Examine the Door] ->examine_door
 * {final_cycle != ""} [Accept the Door] ->accept_door
 * {big_voice} [Choose your Karma] -> tripping_death
 * {first_cycle == "Lemon Party"} [Choose your Karma] -> another_death1
@@ -132,15 +131,61 @@ You take one last look behind you at the door but you see it has disappeared com
 
 All of a sudden you here a familiar big booming voice.
 
-"CONGRADULATIONS PLAYER ON A JOB WELL DONE!!! LET'S TALLY UP THEM KARMA SCORE'S FOLKS!."
+"CONGRATULATIONS PLAYER ON A JOB WELL DONE!!! LET'S TALLY UP THEM KARMA SCORE'S FOLKS!."
 
 {goodness} POINT'S IN GOOD KARMA
 {midness} POINT'S IN NEUTRAL KARMA
 {badness} POINT'S IN BAD KARMA
 
--> DONE
+"ALL RIGHTY THEN, I HOPE YOU WERE SATISFIED FOLKS, IT'S BEEN GREAT TO GO ON THIS JOURNEY WITH YOU BUT AS THEY SAY ALL THINGS MUST COME TO AN END, EXCEPT THE PLAYER'S NEW ETERNAL HOME THAT IS, LET'S SEE THIER FINAL GRAND PRIZE!!!!!
 
+* {badness >= midness && badness >= goodness} [Final Destination] 
+->bad_ending
+* {goodness >= midness && goodness >= badness} [Final Destination] 
+->good_ending
+* {midness >= goodness && midness >= badness} [Final Destination]
+->mid_ending
+* {goodness == badness && goodness == midness}   [пожалуйста, товарищ]
+->hello_comrad
+==good_ending==
+Congrats, you did everything right.  Seriously, go pat yourself on the back for just how good you are.  You just were that awesome.  All the checkmarks were checked, the crannies nooked, and you had 100% completion on everything you ever did.  You have EARNED your peace, that's just a fact.  Here you are in a state of permanent bliss never to have a real problem ever again, it's incredibly easy.  Oh dont worry you wont get bored, we promise.  Sure, you'll still have some resemblence to something that was once a real individual with your own thoughts and feelings, sure, sure.  We promise you wont just be a big homogenous grey blob of goodness alright, it will just be big, homogenous and good, don't sweat the small stuff brotha.  Just go rolling over to that empty corner of blissful stillness over there and have fun, or well peacefulness... 
+->DONE
 
+==bad_ending==
+Gosh you just kinda suck dont ya and it's not just us thinking that.  Man were you a jerk, all those lifetime's and you never learned, hell you never wanted to.  You just did the same bad stuff every single time, damn the consequences right.  And yeah the universe was designed to reward that bad behavior at every single turn containing no inheritly postive lessons but cmon dude that's quite, rude.  What a fricken meanie, sheesh.  Like were not gonna go into all that horrifying stuff you did but boy howdie it was bad, I mean you were there so you know, probably.  Anyways, welcome to stinkmeaner territory bub, it really reeks alot here and you never get used to it.  If you take any lesson from all that transpired here in one final kernal of given knowledge, know this... This is your place now and you deserve it.
+->DONE
+==mid_ending==
+Well you existed, I guess. Consider us whelmed.  Ambitions, mediocre, possetions, mediocre, relationships, mediocre, graphic's card, medicore.  I think you get the picture.  Im yawning from just trying to remember it, what a stagnant but sometime's mildy curious journey.  It's kinda crazy you just never got more interesting that whole time huh.  All those interesting people you saw and met, none of it rubbed off, I guess.  Damn, I almost feel bad for you, but it's not really bad per say here, not so good either, more meloncholy apathy-esk to be honest... At least you have a bit more range of what you can do and feel here, unfortunately it's all mid as fuck. But hey what kind of eternal place can you expect for being a true 7 out of 10 individual.  
+->DONE
+
+==hello_comrad==
+Where you emerge you see a POWERFUL Red Sky, deep in its heart you make out a striking image of a yellow hammer and scicle with a star above.
+
+You hear a loud, bellowing Bass coming from everywhere singing "UNITED FOREVER IN FRIENDSHIP and LABOR, OUR MIGHTY REPUBLICS WILL EVER ENDURE.."
+
+All of sudden under the crimson sky you see burly bearded large men smiling as far as the eye can see all dressed in warm looking black uniform's.
+
+Then a voice from the sky begins to speak.
+
+*[☭] ->for_motharussia
+
+==for_motharussia==
+
+"AH YES WELCOME HOME COMRADE, WELCOME HOME.  WE HAVE BEEN EXPECTING YOU FOR SO VERY LONG. HERE UNDER THE IRON CURTAIN WE LEAVE NONE OF OUR BROTHERS AND SISTERS BEHIND.  ALL ARE THE SAME IN THE MOTHERLAND."
+
+Suddenly a beam of light come's from under the iconic sybol in front of your feet.
+
+"NOW THAT THE WAIT FOR OUR MISSING LAMB IS OVER COMRADE IT'S TIME FOR YOU TO RETURN WITH US TO THE MOTHERLAND WITH THAT STEADY WORKING HAND AND A HEART OF IRON.  YOU CAN HELP ENSURE THAT WE WIN THE FIGHT FOR TRUE EQUALITY FOR ALL.  WE MUST UNITE!!!"
+
+The beam begin's to pull your soul toward's the hammer and scicle.
+
+"OH YEAH, ONE MORE THING, THIS TIME TRY TO PAY ATTENSION TO WHERE YOUR GOING SO YOU DONT TRIP AND FALL, DUMBASS.."
+
+You are born on the year 1878 in the outskirts of the modest city of Gori, Georgia to a humbe shoemaker....
+
+Everything has led to this, destiny has open her gates, the moral stage is set for you to save the world.
+
+->DONE
 
 == your_surroundings ==
 The room seems to be shaped in a wide circle, with very tall maroon walls, the ceiling has several black chandeilier's hanging from above holding a vareity of differently sized candle's with blue wax and purple flame.  Besides the center gate there seem's to be no other door's visable. 
@@ -222,7 +267,7 @@ There are three white cloud's before you.  Staring at the first cloud make's you
 
 == rufiki_guide ==
 You see before you what looks to be an old grey baboon with crazy prism looking eyes using one arm to hold onto a vine that is appearing out of thin air.  The other hand is balled into a fist clearly concealing something.  
-+ ["Who are you and why am I here"] -> first_answer
+* ["Who are you and why am I here"] -> first_answer
 * {first_answer} ["You seem familiar, is your name..."] -> no_relation
 * {first_answer} [Answer a Riddle] -> good_riddle
 * {first_answer} [Answer some fun Trivia] -> good_trivia
@@ -263,7 +308,7 @@ You and the Baboon begin to fly high at astronomical speed's.  The jungle expand
 == sorta_wrong1 ==
 
 "Wait how would Pinesol help cure a sick lemon, it's literally made with the blood of innocent lemon's, such a dissapointing answer, it seem's you have not learned from the past and are not ready for sour ascension."
-~ goodness = goodness - 3
+~ goodness = goodness - 2
 * [One Last Chance] -> rufiki_guide
 
 == good_trivia ==
@@ -331,7 +376,7 @@ Then all of the sudden the music muffle's down to a purr and a loud cheery voice
 
 == sleddy_guide ==
   You see before something youd never thought youd see, a large talking sled with animated eyes and a mouth somehow standing before you upright with no arms or legs {second_answer: |singing a song with christmas spirit}.
-+ ["What in the world.."] -> second_answer
+* ["What in the world.."] -> second_answer
 * {second_answer} ["I've never seen National Lampoon's Christmas Vacation.."] -> intense_responce
 * {second_answer} [Answer a Riddle] -> mid_riddle
 * {second_answer} [Answer some fun Trivia] -> mid_trivia
@@ -406,7 +451,7 @@ You and Sledy are flying now, up, up and away.  You begin to see everything you 
 "What are you on brother, what does an ice patch have to do with faith and family value's, what are you talking about."
 "I mean there is patches of ice in the movie but still cmon man the answer was Christmas Vacation, it was an easy layup man, kind of a buzzkill."  
 The sled give's a dissapointing look.
-~ midness = midness - 3
+~ midness = midness - 2
 *[One Last Chance] -> sleddy_guide
 
 ==intense_responce==
@@ -442,7 +487,7 @@ You hear a slam of the stove closing followed by a hollar, "OWWWWW, Good Lord!!"
 
 == mother_guide ==
   It appears to be your, Mother? She look's like she was when you were small, one would think that is strange enough but she appear's to be hunkerd over in pain with a hunchback.  It' look's terribly painful.
-+ ["Mom, how are you here, what's going on"] -> third_answer
+* ["Mom, how are you here, what's going on"] -> third_answer
 * {third_answer} ["Mom what the hell happened to your back?"] -> moms_back
 * {third_answer} [Answer a Riddle] -> bad_riddle
 * {third_answer} [Answer some fun Trivia] -> bad_trivia
@@ -529,7 +574,7 @@ Your mind and soul are reborn into the body of a young man who's soul and mind w
 ==what_why==
 "AAHHH OOWWWW"
 "Why in the world are you babblin about a sidewalk child, a sidewalk isnt gonna fix my back child, they are the PROBLEM not the SOLUTION."  "I thought the cement comment would throw you an easy one not distract you, I don't know what Im going to do with you."  She shake's her head in utter dissapointment.
-~ badness = badness - 3
+~ badness = badness - 2
 * [One more shot] -> mother_guide
 ==moms_back==
 "What the hell happened to my back, WHAT THE HELL HAPPENED TO MY BACK?"  
